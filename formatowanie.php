@@ -9,12 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	//$('form').fadeOut(2000);
-	$(document).ready(function(){
-	//$("#jednostka").chained("#kat");
-	//$('form').fadeOut(2000);
-	$("#series").chained("#mark");
-	});
+	
+
 </script>
 </head>
 
@@ -48,6 +44,9 @@
 		if(!is_numeric($input)){
 			echo "wartość musi być liczbą, a nie jest";
 		}else{
+			$dl = strlen($input);
+			
+			
 			$startowa = $_POST['startowa'];
 			$docelowa = $_POST['docelowa'];
 			if(($startowa == 'km') && ($docelowa == 'm')){
@@ -61,12 +60,15 @@
 			}
 			if(($startowa == 'cm') && ($docelowa == 'm')){
 				echo $input." ".$startowa." jest równe ".$input/100 .$docelowa;
+				if($dl>2) echo " czyli ".substr($input, 0, -2)." $docelowa i ". substr($input, -2).$startowa;
 			}
 			if(($startowa == 'm') && ($docelowa == 'km')){
 				echo $input." ".$startowa." jest równe ".$input/1000 .$docelowa;
+				if($dl>3) echo " czyli ".substr($input, 0, -3)." $docelowa i ". substr($input, -3).$startowa;
 			}
 			if(($startowa == 'cm') && ($docelowa == 'km')){
 				echo $input." ".$startowa." jest równe ".$input/100000 .$docelowa;
+				if($dl>6) echo " czyli ".substr($input, 0, -5)." $docelowa i ". substr($input, -5).$startowa;
 			}
 		}
 	}else{
@@ -74,10 +76,7 @@
 	}
 ?>
 
-<script>
-	//$('form').fadeOut(2000);
-	$("#jednostka").chainedTo("#kat");
-</script>
+
 
 </body>
 </html>
