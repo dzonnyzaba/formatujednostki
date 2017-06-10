@@ -13,13 +13,33 @@
 
 <form action="" method="post">
 	wprowadź wartość: <input type="text" name="jedn"/>
-	<!--<input type="radio" name>-->
+	kategoria: 
+	<select>
+		<option value="dlugosc">długość</option>
+		<option value="waga">waga</option>
+	</select>
+	jednostka z: <select>
+		<option value="km">Volvo</option>
+		<option value="saab">Saab</option>
+		<option value="mercedes">Mercedes</option>
+		<option value="audi">Audi</option>
+	</select>
 	<input type="submit" value="formatuj">
 </form>
 
 <?php
 	if(isset($_POST['jedn']) && !empty($_POST['jedn'])){
-		echo "jestem";
+		$input = $_POST['jedn'];
+		
+		if(!is_numeric($input)){
+			echo "wartość musi być liczbą a nie jest";
+		}else{
+			$war = $input;
+			echo $war;
+			if($war>=1000){
+				
+			}
+		}
 	}else{
 		echo "nie ma nic";
 	}
